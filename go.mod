@@ -4,8 +4,8 @@ go 1.18
 
 require (
 	github.com/bluenviron/gortsplib/v4 v4.6.2
-	github.com/bluenviron/mediacommon v1.5.1
-	github.com/pion/rtp v1.8.3
+	github.com/bluenviron/mediacommon v1.12.0
+	github.com/pion/rtp v1.8.7-0.20240429002300-bc5124c9d0d0
 	go.uber.org/zap v1.26.0
 	m7s.live/engine/v4 v4.15.1
 )
@@ -17,14 +17,14 @@ require (
 	github.com/go-task/slim-sprig v0.0.0-20230315185526-52ccab3ef572 // indirect
 	github.com/golang/mock v1.6.0 // indirect
 	github.com/google/pprof v0.0.0-20210407192527-94a9f03dee38 // indirect
-	github.com/google/uuid v1.4.0 // indirect
+	github.com/google/uuid v1.6.0 // indirect
 	github.com/logrusorgru/aurora/v4 v4.0.0 // indirect
 	github.com/lufia/plan9stats v0.0.0-20230326075908-cb1d2100619a // indirect
 	github.com/mcuadros/go-defaults v1.2.0 // indirect
 	github.com/onsi/ginkgo/v2 v2.9.5 // indirect
 	github.com/pion/randutil v0.1.0 // indirect
-	github.com/pion/rtcp v1.2.12 // indirect
-	github.com/pion/sdp/v3 v3.0.6 // indirect
+	github.com/pion/rtcp v1.2.14 // indirect
+	github.com/pion/sdp/v3 v3.0.9 // indirect
 	github.com/pion/webrtc/v3 v3.2.20 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/power-devops/perfstat v0.0.0-20221212215047-62379fc7944b // indirect
@@ -38,12 +38,14 @@ require (
 	github.com/yapingcat/gomedia v0.0.0-20230905155010-55b9713fcec1 // indirect
 	github.com/yusufpapurcu/wmi v1.2.3 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
-	golang.org/x/crypto v0.16.0 // indirect
+	golang.org/x/crypto v0.24.0 // indirect
 	golang.org/x/exp v0.0.0-20230905200255-921286631fa9 // indirect
 	golang.org/x/mod v0.12.0 // indirect
-	golang.org/x/net v0.19.0 // indirect
+	golang.org/x/net v0.26.0 // indirect
 	golang.org/x/sync v0.3.0 // indirect
-	golang.org/x/sys v0.15.0 // indirect
+	golang.org/x/sys v0.21.0 // indirect
 	golang.org/x/tools v0.13.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
+
+replace github.com/bluenviron/gortsplib/v4 v4.6.2 => github.com/hessonsu/gortsplib/v4 v4.11.0
