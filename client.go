@@ -74,7 +74,7 @@ func (p *RTSPPuller) Pull() (err error) {
 		return err
 	}
 	p.Debug("Describe", zap.Any("res", res))
-	p.session = session
+	p.RTSPPublisher.session = session
 	err = p.SetTracks()
 	if err != nil {
 		p.Error("SetTracks", zap.Error(err))
@@ -146,13 +146,13 @@ func (p *RTSPPusher) Push() (err error) {
 	// 	}
 	// }
 	var res *base.Response
-	if res, err = p.Announce(u, p.session); err != nil {
+	if res, err = p.Announce(u, p.RTSPSubscriber.session); err != nil {
 		p.Error("Announce", zap.Error(err))
 		return
 	} else {
 		p.Debug("Announce", zap.Any("res", res))
 	}
-	err = p.SetupAll(u, p.session.Medias)
+	err = p.SetupAll(u, p.RTSPSubscriber.session.Medias)
 	if err != nil {
 		p.Error("Setup", zap.Error(err))
 		return

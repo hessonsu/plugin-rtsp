@@ -93,7 +93,8 @@ func (conf *RTSPConfig) OnPlay(ctx *gortsplib.ServerHandlerOnPlayCtx) (*base.Res
 }
 func (conf *RTSPConfig) OnRecord(ctx *gortsplib.ServerHandlerOnRecordCtx) (*base.Response, error) {
 	if p, ok := conf.Load(ctx.Session); ok {
-		ctx.Session.OnPacketRTPAny(p.(*RTSPPublisher).OnPacket)
+		pInfo := p.(*RTSPPublisher)
+		ctx.Session.OnPacketRTPAny(pInfo.OnPacket)
 	}
 	return &base.Response{
 		StatusCode: base.StatusOK,
