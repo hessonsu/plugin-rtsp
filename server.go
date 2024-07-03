@@ -5,7 +5,7 @@ import (
 	"github.com/bluenviron/gortsplib/v4/pkg/base"
 	"github.com/bluenviron/gortsplib/v4/pkg/description"
 	"go.uber.org/zap"
-	"m7s.live/engine/v4/common"
+	. "m7s.live/engine/v4"
 )
 
 type RTSPIO struct {
@@ -24,7 +24,7 @@ func (conf *RTSPConfig) OnConnOpen(ctx *gortsplib.ServerHandlerOnConnOpenCtx) {
 func (conf *RTSPConfig) OnConnClose(ctx *gortsplib.ServerHandlerOnConnCloseCtx) {
 	RTSPPlugin.Debug("conn closed")
 	if p, ok := conf.LoadAndDelete(ctx.Conn); ok {
-		p.(common.IIO).Stop(zap.String("conn", "closed"))
+		p.(IIO).Stop(zap.String("conn", "closed"))
 	}
 }
 
@@ -93,8 +93,7 @@ func (conf *RTSPConfig) OnPlay(ctx *gortsplib.ServerHandlerOnPlayCtx) (*base.Res
 }
 func (conf *RTSPConfig) OnRecord(ctx *gortsplib.ServerHandlerOnRecordCtx) (*base.Response, error) {
 	if p, ok := conf.Load(ctx.Session); ok {
-		pInfo := p.(*RTSPPublisher)
-		ctx.Session.OnPacketRTPAny(pInfo.OnPacket)
+		ctx.Session.OnPacketRTPAny(p.(*RTSPPublisher).OnPacket)
 	}
 	return &base.Response{
 		StatusCode: base.StatusOK,
